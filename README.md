@@ -32,5 +32,40 @@
 2. export PYTHONPATH=$PYTHONPATH:$PWD
 3. python -m tests.dopamine.atari_init_test
 
+# Docker Setup
+## Core Image
+1. cd /atari_dopamine/dopamine
+2. docker build -f docker/core/Dockerfile -t dopamine/core .
+
+
+## Atari Image
+1. mkdir /root/roms
+2. cp /home/mohamed/Downloads/Roms.rar /root/roms/
+3. apt install rar
+4. apt install zip unzip
+5. zip -r /root/roms/ROMS.zip /root/roms/ROMS
+6. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
