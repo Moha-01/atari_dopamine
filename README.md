@@ -46,6 +46,9 @@
 5. zip -r /root/roms/ROMS.zip /root/roms/ROMS
 6. 
 
+## Mögliche Komplett Lösung:
+https://gitee.com/ford25v6/dopamine/blob/master/README.md#https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Fgoogle%2Fdopamine%2Fblob%2Fmaster%2Fdopamine%2Fdiscrete_domains%2Ftrain.py
+
 
 
 
