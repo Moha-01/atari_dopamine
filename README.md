@@ -57,6 +57,8 @@
 
 - https://towardsdatascience.com/deep-reinforcement-learning-for-video-games-made-easy-6f7d06b75a65
 
+- https://github.com/holmdk/dopamine_ALE_agent
+
 
 
 
