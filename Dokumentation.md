@@ -1,3 +1,100 @@
+# Studienarbeit WS 2022/23
+
+## Allgemeine Informationen
+
+- Autor: Mohamed Haji
+- Matrikelnummer: 8528264
+- Studiengang: Angewandte Informatik
+- Kurs: MOS-TINF20B
+- Betreuer: Prof. Dr. Carsten Müller
+
+<br>
+
+## Title
+
+### _Realisierung einer Lernumgebung basierend auf Google Dopamine für Reinforcement Learning_
+
+<br>
+
+## Beschreibung
+
+Auf Basis von Google Dopamine für Reinforcement Learning (https://github.com/google/dopamine) ist
+eine Lernumgebung für die schnelle prototypische Konzeptionierung/Implementierung von Algorithmen
+zu realisieren. Der Nachweis der Leistungsfähigkeit
+erfolgt mit dem Szenario "Atari". Setup, Betrieb und Tutorials sind detailliert zu dokumentieren.
+
+<br>
+
+## Equipment
+
+Nvidia Jetson AGX Xavier Developer Kit (https://developer.nvidia.com/embedded/jetson-agx-xavier-developer-kit)
+
+<br>
+
+## Aufgaben
+
+- [ ] Setup NVIDIA Jetson AGX mit JetPack
+- [ ] Setup Docker Ubuntu Linux auf NVIDIA Jetson AGX
+- [ ] Setup Dopamine auf Ubuntu Linux in Docker Container
+- [ ] Detaillierte Dokumentation der Installation/Konfiguration sowie Nutzung unter Microsoft Windows.
+
+<br>
+
+# JetPack
+
+<div align="center">
+  <img src="https://s2.www.theimagingsource.com/application-1.6438.89739/img/embedded_vision/nvidia_jetpack.png" style="height: 150px; width: 200px"><br><br>
+</div>
+
+NVIDIA JetPack SDK ist die umfassendste Lösung zum Erstellen von durchgängig beschleunigten KI-Anwendungen. JetPack bietet eine vollständige Entwicklungsumgebung für hardwarebeschleunigte KI-at-the-Edge-Entwicklung. Alle Jetson-Module und Entwicklerkits werden von JetPack unterstützt. Mit JetPack kann man KI-Anwendungen auf dem Jetson-Modul oder -Entwicklerkit ausführen, ohne dass man sich um die Installation von Treibern, Software oder Tools kümmern muss.
+
+<br>
+
+## Allgemein
+
+Für das Optimale Zugriff auf Nvidia Jetson Software & Services, ist hierfür eine Registrierung erforderlich. Die Registrierung erfolgt über die Webseite https://developer.nvidia.com/developer-program
+
+Für die Installation von JetPack wird Ubuntu 20.04.1 LTS verwendet. Diese läuft in eine Virtuelle Machine (VM) auf einem Windows 10 Host. Die VM wird mit VMware Workstation 15 Pro erstellt. Die VM hat 16GB RAM 200GB Festplattenspeicher und 4 CPU Cores.
+
+<br>
+
+## Download
+
+Über den Link (nach Anmeldung) https://developer.nvidia.com/drive/sdk-manager wird JetPack SDK heruntergeladen.
+Diesen dann in einem entsprechen Verzeichnis auf dem VM-Host speichern. und installieren.
+
+```
+mv /home/mohamed/Downloads/sdkmanager_1.9.0-10816_amd64.deb /home/mohamed/jetpack/
+```
+
+<br>
+
+## Installation
+
+```
+sudo apt install ./sdkmanager_1.9.0-10816_amd64.deb
+```
+
+<br>
+
+## SDK Manager starten
+
+Im Terminal folgender Befehl ausführen:
+
+```
+sdkmanager
+```
+
+Dann erscheint das SDK Manager Fenster. Hierfür ist eine Anmeldung erforderlich. Diese erfolgt mit den Zugangsdaten, welche bei der Registrierung auf der Webseite https://developer.nvidia.com/developer-program angegeben wurden. Nach der Anmeldung kann nun die Installation von JetPack gestartet werden.
+
+<br>
+
+# Docker
+
+<div align="center">
+  <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png"  style="height: 150px; width: 200px"><br><br>
+</div>
+
 # Dopamine
 
 <div align="center">
