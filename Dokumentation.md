@@ -166,6 +166,74 @@ reboot
   <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png"  style="height: 150px; width: 200px"><br><br>
 </div>
 
+Docker ist eine Software zur Erstellung, Ausführung und Verteilung von Anwendungen in Containern. Docker-Container sind isolierte Umgebungen, in denen Anwendungen laufen. Sie enthalten alles, was sie zum Laufen brauchen: Code, Laufzeitumgebung, Systemwerkzeuge und Bibliotheken. Docker-Container sind Plattformunabhängig, sodass sie auf jedem Betriebssystem laufen, auf dem Docker installiert ist. Docker-Container können leicht erstellt, verteilt und aktualisiert werden.
+
+<br>
+
+## Entferne alte Versionen
+
+```
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
+
+Es ist OK, wenn diese Befehle Fehler ausgeben.
+
+<br>
+
+## Installation durch die Repository
+
+### 1. Repository aufsetzen
+
+#### Aktualisiere des Paketindex und Installation der Pakete, die Docker benötigt, um über HTTPS Pakete aus dem Repository zu installieren:
+
+```
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+
+#### Füge Docker’s offiziellen GPG-Schlüssel hinzu:
+
+```
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker-archive-keyring.gpg
+```
+
+#### Setze die stabile Repository auf:
+
+```
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+### 2. Installation Docker Engine
+
+#### Aktualisiere das Paketindex und installiere die neueste Version von Docker Engine und containerd, oder gehe zum nächsten Schritt, um eine bestimmte Version zu installieren:
+
+```
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose plugin
+```
+
+#### Starte Docker:
+
+```
+sudo systemctl start docker
+```
+
+#### Führe den Docker-Hello-World-Container aus, um sicherzustellen, dass Docker ordnungsgemäß installiert wurde:
+
+```
+sudo docker run hello-world
+```
+
+<br>
+
 # Dopamine
 
 <div align="center">
