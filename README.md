@@ -57,6 +57,7 @@ python3 -m jupyterlab --allow-root
 
 # Dopamine /usr/local/lib/python3.10/dist-packages/dopamine
 apt install ffmpeg libsm6 libxext6  -y
+apt-get install python3-dev
 apt install gsutil
 pip install dm_control
 ```
