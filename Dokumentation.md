@@ -34,9 +34,14 @@ Nvidia Jetson AGX Xavier Developer Kit (https://developer.nvidia.com/embedded/je
 ## Aufgaben
 
 - [ ] Setup NVIDIA Jetson AGX mit JetPack
-- [ ] Setup Docker Ubuntu Linux auf NVIDIA Jetson AGX
-- [ ] Setup Dopamine auf Ubuntu Linux in Docker Container
+- [ ] Setup Docker Ubuntu Linux (22.04.1 LTS) auf NVIDIA Jetson AGX
+- [ ] Setup Dopamine auf Ubuntu Linux (22.04.1 LTS) in dem erstellten Docker Container
 - [ ] Detaillierte Dokumentation der Installation/Konfiguration sowie Nutzung unter Microsoft Windows.
+- [ ] Setup Szenario "Atari"
+- [ ] Fortschritt des Trainings ist in geeigneter Form zu protokollieren und zu visualisieren.
+- [ ] Erstellung Tutorial für das Szenario „Atari“ für Studierende der Angewandten Informatik
+- [ ] Ein Studierender der Angewandten Informatik soll das Szenario „Atari“ bauen, das Training durchführen und durch Logging/Visualisierung die Ergebnisse interpretieren.
+- [ ] Technische Dokumentation der Lernumgebung
 
 <br>
 
@@ -61,17 +66,13 @@ Für die Installation von JetPack wird Ubuntu 20.04.1 LTS verwendet. Diese läuf
 ## Download
 
 Über den Link (nach Anmeldung) https://developer.nvidia.com/drive/sdk-manager wird JetPack SDK heruntergeladen.
-Diesen dann in einem entsprechen Verzeichnis auf dem VM-Host speichern. und installieren.
-
-```
-mv /home/mohamed/Downloads/sdkmanager_1.9.0-10816_amd64.deb /home/mohamed/jetpack/
-```
 
 <br>
 
 ## Installation
 
 ```
+cd /home/mohamed/Downloads
 sudo apt install ./sdkmanager_1.9.0-10816_amd64.deb
 ```
 
