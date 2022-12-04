@@ -80,7 +80,12 @@ sudo apt install ./sdkmanager_1.9.0-10816_amd64.deb
 
 ## SDK Manager starten
 
-Im Terminal folgender Befehl ausführen:
+- Das Jetson AGX Xavier Developer Kit wird mit dem USB-C Kabel an den Host angeschlossen.
+- Dann in force Recovery Mode gebracht. Dies geschieht durch Drücken der Recovery Taste und Power On/Off Taste auf der Platine.
+- Leuchtet die Power LED auf, ist das Board im Recovery Mode.
+- Dann das anschließen des USB-C Kabels an den Host zu der VM leiten.
+
+Nun kann im Terminal folgender Befehl ausgeführt werden:
 
 ```
 sdkmanager
@@ -108,7 +113,7 @@ Die zu installierenden Komponenten auswählen.
   <img src="./images/nvidia/Step 2.png" ><br><br>
 </div>
 
-Die Komponenten werden in der Regel automatisch ausgewählt. Hier noch die Developer Tools auch noch auswählen. Danach ein häkchen bei "I accept to the terms and conditions" setzen und auf "Continue to Step 3" klicken.
+Die Komponenten werden in der Regel automatisch ausgewählt. Hier noch die SDK Components raus machen (Im Abbidung noch ausgewählt). Danach ein häkchen bei "I accept to the terms and conditions" setzen und auf "Continue to Step 3" klicken.
 Es wird gefordert den Passwort einzugeben, um mit der Installation weiter zu machen.
 
 <br>
@@ -122,6 +127,38 @@ Nun werden die ausgewählten Komponenten heruntergeladen und installiert.
 </div>
 
 <br>
+
+### Step 3.1:
+
+Flash Optionen auswählen.
+
+<div align="center">
+  <img src="./images/nvidia/Flash Options 1.png" ><br><br>
+</div>
+
+Hier wird die Flash Option ausgewählt.
+
+- Username: dhbw
+- Password: dhbw
+
+Dann auf "Flash" klicken.
+
+<br>
+
+Die Installation dauert ca. 1 Stunde.
+Nun kann man über den Jetson AGX Xavier Developer Kit bedienen.
+Mit den oben erstellten Benutzerdaten sich anmelden und die Installation von JetPack ist abgeschlossen.
+
+<br>
+
+## Update der Software über dem Terminal
+
+```
+sudp apt update
+sudo apt list --upgradable
+sudo apt upgrade
+reboot
+```
 
 # Docker
 
