@@ -82,6 +82,8 @@ apt install ffmpeg libsm6 libxext6  -y
 
 - https://github.com/holmdk/dopamine_ALE_agent
 
+- https://github.com/google/dopamine/blob/826f172ff24df00ab2f8cf4f6f0d352df17acdfe/dopamine/colab/agents.ipynb
+
 
 
 
