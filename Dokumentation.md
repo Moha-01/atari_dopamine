@@ -87,6 +87,39 @@ sdkmanager
 
 Dann erscheint das SDK Manager Fenster. Hierfür ist eine Anmeldung erforderlich. Diese erfolgt mit den Zugangsdaten, welche bei der Registrierung auf der Webseite https://developer.nvidia.com/developer-program angegeben wurden. Nach der Anmeldung kann nun die Installation von JetPack gestartet werden.
 
+### Step 1:
+
+SDK Manager erkennt die Hardware und zeigt diese an.
+
+<div align="center">
+  <img src="./images/nvidia/Step 1.png" ><br><br>
+</div>
+
+JetPack Version 5.0.2 ist automatisch ausgewählt. Diese Version wird verwendet. Dann auf Continue to Step 2 klicken.
+
+<br>
+
+### Step 2:
+
+Die zu installierenden Komponenten auswählen.
+
+<div align="center">
+  <img src="./images/nvidia/Step 2.png" ><br><br>
+</div>
+
+Die Komponenten werden in der Regel automatisch ausgewählt. Hier noch die Developer Tools auch noch auswählen. Danach ein häkchen bei "I accept to the terms and conditions" setzen und auf "Continue to Step 3" klicken.
+Es wird gefordert den Passwort einzugeben, um mit der Installation weiter zu machen.
+
+<br>
+
+### Step 3:
+
+Nun werden die ausgewählten Komponenten heruntergeladen und installiert.
+
+<div align="center">
+  <img src="./images/nvidia/Step 3.png" ><br><br>
+</div>
+
 <br>
 
 # Docker
