@@ -39,7 +39,7 @@
 
 ```
 docker pull ubuntu
-docker run -d -t -p 127.0.0.1:8888:8888/tcp --name test ubuntu
+docker run -d -t --add-host host.docker.internal:host-gateway --name test ubuntu
 docker exec -it containerName bash
 docker stop c19d45bbbc616bf16902305b453d063d7eb02cad5930a38428cfb7cb4e531c9a
 docker rm 135df2629b248df8281cc443a7a98a2f276cd709cf424df6820d1f266fa4c76b
