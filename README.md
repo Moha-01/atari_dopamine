@@ -39,7 +39,7 @@
 
 ```
 docker pull ubuntu
-docker run -d -t --publish 8888:8888 --name test ubuntu
+docker run -d -t -p 127.0.0.1:8888:8888/tcp --name test ubuntu
 docker exec -it containerName bash
 docker rm 135df2629b248df8281cc443a7a98a2f276cd709cf424df6820d1f266fa4c76b
 
