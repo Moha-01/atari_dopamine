@@ -37,6 +37,12 @@
 1. cd /atari_dopamine/dopamine
 2. docker build -f docker/core/Dockerfile -t dopamine/core .
 
+```
+docker pull ubuntu
+docker run -d -t --name containerName ubuntu
+docker exec -it containerName bash
+```
+
 
 ## Atari Image
 1. mkdir /root/roms
