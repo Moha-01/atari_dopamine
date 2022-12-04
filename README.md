@@ -53,6 +53,11 @@ apt install pip
 pip install jupyterlab
 python3 -m jupyterlab --allow-root
 
+
+
+# Dopamine
+apt install ffmpeg libsm6 libxext6  -y
+
 ```
 
 
