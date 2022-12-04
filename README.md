@@ -57,6 +57,7 @@ python3 -m jupyterlab --allow-root
 
 # Dopamine
 apt install ffmpeg libsm6 libxext6  -y
+apt install gsutil
 
 ```
 
@@ -83,6 +84,8 @@ apt install ffmpeg libsm6 libxext6  -y
 - https://github.com/holmdk/dopamine_ALE_agent
 
 - https://github.com/google/dopamine/blob/826f172ff24df00ab2f8cf4f6f0d352df17acdfe/dopamine/colab/agents.ipynb
+
+- https://colab.research.google.com/github/google/dopamine/blob/master/dopamine/colab/agents.ipynb
 
 
 
