@@ -1,0 +1,88 @@
+ARG cuda_docker_tag="11.2.2-cudnn8-devel-ubuntu20.04"  <- Hier Ubuntu 22.04 nehmen aus https://hub.docker.com/r/nvidia/cuda
+FROM nvidia/cuda:${cuda_docker_tag}
+
+# @title Load baseline data
+!gsutil -q -m cp -R gs://download-dopamine-rl/preprocessed-benchmarks/* /content/
+mkdir /content
+
+apt-get update
+DEBIAN_FRONTEND="noninteractive" apt-get install tzdata -y   <- tzdata is required below. To avoid hanging, install it first.
+apt-get install git wget libgl1-mesa-glx -y
+
+cd /root
+git clone https://github.com/google/dopamine.git 
+
+
+# Install Python3.8
+apt-get install software-properties-common -y
+add-apt-repository ppa:deadsnakes/ppa -y
+apt-get install python3.8 -y
+
+# Make python3.8 the default python.
+rm /usr/bin/python3
+ln -s /usr/bin/python3.8 /usr/bin/python3
+ln -s /usr/bin/python3.8 /usr/bin/python
+## apt-get install python3-distutils -y
+apt-get install python3.8-distutils -y
+
+# Install pip.
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+rm get-pip.py
+
+# Install Dopamine dependencies.
+pip install -r /root/dopamine/requirements.txt
+pip install gsutil
+pip install tensorflow tensorflow-gpu
+pip install mock
+pip install dm-control
+
+# @title Load baseline data
+!gsutil -q -m cp -R gs://download-dopamine-rl/preprocessed-benchmarks/* /content/
+mkdir /content
+
+# Install JAX for GPU, overriding requirements.txt.
+pip install --upgrade "jax[cuda111]" -f https://storage.googleapis.com/jax-releases/jax_releases.html
+
+
+# Copy ROMs into the image.
+cd /root
+mkdir roms
+cd ./roms
+wget http://www.atarimania.com/roms/Roms.rar
+
+
+
+apt-get install rar unzip -y
+rar x /root/roms/Roms.rar /root/roms/
+
+# Install ROMs with ale-py.
+pip install atari_py ale-py
+
+# Get Roms.rar from http://www.atarimania.com/roms/Roms.rar
+# Unzip Roms.rar an add it to atari_py requierments: git cmake zlib1g-dev
+#cd /root/roms
+#python -m atari_py.import_roms ./Roms
+python -m atari_py.import_roms /root/roms/ROMS
+ale-import-roms /root/roms/ROMS
+
+pip install Cmake
+
+export PYTHONPATH=$PYTHONPATH:$PWD
+python -m tests.dopamine.atari_init_test
+
+# Training agents
+cd /root/dopamine
+python -um dopamine.discrete_domains.train \
+  --base_dir /tmp/dopamine_runs \
+  --gin_files dopamine/agents/dqn/configs/dqn.gin
+
+
+
+
+
+
+
+
+
+
