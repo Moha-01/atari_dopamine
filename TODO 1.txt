@@ -79,6 +79,10 @@ python -um dopamine.discrete_domains.train \
 
 
 
+Fazit:
+Über Dockerfiles installieren 
+-> unzip cmd auskommentieren
+
 
 
 
