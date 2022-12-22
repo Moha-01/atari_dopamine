@@ -33,10 +33,10 @@ Nvidia Jetson AGX Xavier Developer Kit (https://developer.nvidia.com/embedded/je
 
 ## Aufgaben
 
-- [ x ] Setup NVIDIA Jetson AGX mit JetPack
-- [ x ] Setup Docker Ubuntu Linux (22.04.1 LTS) auf NVIDIA Jetson AGX
-- [ x ] Setup Dopamine auf Ubuntu Linux (22.04.1 LTS) in dem erstellten Docker Container
-- [ x ] Detaillierte Dokumentation der Installation/Konfiguration
+- [x] Setup NVIDIA Jetson AGX mit JetPack
+- [x] Setup Docker Ubuntu Linux (22.04.1 LTS) auf NVIDIA Jetson AGX
+- [x] Setup Dopamine auf Ubuntu Linux (22.04.1 LTS) in dem erstellten Docker Container
+- [x] Detaillierte Dokumentation der Installation/Konfiguration
 - [ ] Setup Szenario "Atari"
 - [ ] Fortschritt des Trainings ist in geeigneter Form zu protokollieren und zu visualisieren.
 - [ ] Erstellung Tutorial für das Szenario „Atari“ für Studierende der Angewandten Informatik
