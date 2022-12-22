@@ -441,4 +441,4 @@ Somit sollte der Agent trainiert werden. Die Trainingsdaten werden in den Ordner
 <br>
 <br>
 
-### Erfahrungen: Google/Dopamine Dokumentation ist nicht Vollständig, man muss sich durch die Fehlermeldungen durchkämpfen sowie das erstllen der Docker Images selbst konfigurieren und durchführen. Die Entwickler von Dopamine sollten mal selbst durch die Dokumentation gehen und schauen ob alles funktioniert wie es soll. Meiner Meinung nach ist die Dokumentation veraltet und nicht mehr aktuell. (Doku != Dopamine Version)
+### Erfahrungen: Google/Dopamine Dokumentation ist nicht Vollständig, man muss sich durch die Fehlermeldungen durchkämpfen sowie das Erstellen der Docker Images selbst konfigurieren und durchführen. Die Entwickler von Dopamine sollten mal selbst durch die Dokumentation gehen und schauen ob alles funktioniert wie es soll. Meiner Meinung nach ist die Dokumentation veraltet und nicht mehr aktuell. (Doku != Dopamine Version)
