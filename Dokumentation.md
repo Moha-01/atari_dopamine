@@ -261,7 +261,7 @@ For more examples and ideas, visit:
   <img src="https://google.github.io/dopamine/images/dopamine_logo.png"><br><br>
 </div>
 
-Dopamine ist ein Framework für die Entwicklung von Deep Reinforcement Learning (DRL) Agenten. Es wurde von Google Brain entwickelt und ist Open Source. Dopamine ist in Python geschrieben und nutzt TensorFlow als Backend. Dopamine ist modular aufgebaut und kann für verschiedene Anwendungsfälle verwendet werden. Es bietet eine Reihe von Agenten, die für verschiedene Anwendungsfälle entwickelt wurden. Dopamine ist auch mit OpenAI Gym kompatibel und kann mit allen Gym-Umgebungen verwendet werden.
+Dopamine ist ein Open-Source-Software-Framework, das von Google entwickelt wurde und das Reinforcement Learning (RL) in Python vereinfacht. Reinforcement Learning ist ein Teilgebiet des Maschinellen Lernens, bei dem Algorithmen dazu gebracht werden, bestimmte Aktionen in einer Umgebung auszuführen, um eine Belohnung zu erhalten. Dopamine bietet eine Reihe von RL-Algorithmen, die von Google-Forschern entwickelt wurden, zusammen mit Werkzeugen und Funktionen, die es erleichtern, RL-Modelle zu entwickeln, zu trainieren und zu evaluieren. Eines der Hauptziele von Dopamine ist es, es Entwicklern zu ermöglichen, RL-Modelle schnell und einfach zu erstellen und zu testen, um sie in verschiedenen Anwendungen einsetzen zu können.
 
 Link: https://github.com/google/dopamine#getting-started
 
