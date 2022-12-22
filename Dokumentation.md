@@ -33,15 +33,14 @@ Nvidia Jetson AGX Xavier Developer Kit (https://developer.nvidia.com/embedded/je
 
 ## Aufgaben
 
-- [x] Setup NVIDIA Jetson AGX mit JetPack
-- [ ] Setup Docker Ubuntu Linux (22.04.1 LTS) auf NVIDIA Jetson AGX
-- [ ] Setup Dopamine auf Ubuntu Linux (22.04.1 LTS) in dem erstellten Docker Container
-- [ ] Detaillierte Dokumentation der Installation/Konfiguration sowie Nutzung unter Microsoft Windows.
+- [ x ] Setup NVIDIA Jetson AGX mit JetPack
+- [ x ] Setup Docker Ubuntu Linux (22.04.1 LTS) auf NVIDIA Jetson AGX
+- [ x ] Setup Dopamine auf Ubuntu Linux (22.04.1 LTS) in dem erstellten Docker Container
+- [ x ] Detaillierte Dokumentation der Installation/Konfiguration
 - [ ] Setup Szenario "Atari"
 - [ ] Fortschritt des Trainings ist in geeigneter Form zu protokollieren und zu visualisieren.
 - [ ] Erstellung Tutorial für das Szenario „Atari“ für Studierende der Angewandten Informatik
 - [ ] Ein Studierender der Angewandten Informatik soll das Szenario „Atari“ bauen, das Training durchführen und durch Logging/Visualisierung die Ergebnisse interpretieren.
-- [ ] Technische Dokumentation der Lernumgebung
 
 <br>
 
@@ -272,6 +271,8 @@ Link: https://github.com/google/dopamine#getting-started
 
 ## 1. Erstellen eines neuen Ordners
 
+Um die Arbeit im Überblick zu behalten, wird ein neuer Ordner erstellt. Dieser Ordner wird verwendet, um die für das Setup benötigten Dateien zu speichern.
+
 ```
 mkdir projekt-dopamine
 cd projekt-dopamine
@@ -279,17 +280,34 @@ cd projekt-dopamine
 
 ## 2. Roms für Atari 2600 herunterladen
 
+Falls wget noch nicht installiert ist, wird es installiert. Anschließend wird der Ordner `roms` erstellt und die Roms für Atari 2600 darin heruntergeladen.
+
+Ist dies Erledigt wird in den Hauptordner `projekt-dopamine` gewechselt.
+
 ```bash
 sudo apt-get install wget -y
-apt-get install unrar -y
 mkdir roms
 cd roms
 wget http://www.atarimania.com/roms/Roms.rar
-unrar x Roms.rar
 cd ..
 ```
 
+## 3. Dopamine aus GitHub klonen
+
+Dopamine wird aus GitHub geklont und in den Ordner `/root` kopiert. Dazu muss man sich als root anmelden. Mit dem Befehl `exit` meldet man sich vom root wieder ab und wechselt in den Hauptordner `projekt-dopamine`.
+
+```bash
+sudo su
+cd /root
+git clone https://github.com/google/dopamine
+exit
+```
+
 ## 3. Erstellen einer Dockerfile (Core)
+
+Die Core-Dockerfile wird erstellt und in den Ordner `core` kopiert. Anschließend wird in den Ordner `core` gewechselt.
+
+In dem Core Image werden die Bibliotheken und Tools sowie Dopamine installiert, die benötigt werden, um Dopamine auszuführen. Dieses Image wird später als Basis für die anderen Images verwendet.
 
 ```bash
 mkdir core
@@ -297,10 +315,10 @@ cd core
 touch Dockerfile
 ```
 
-### 3.1. Dockerfile
+Inhalt der Dockerfile:
 
 ```dockerfile
-ARG cuda_docker_tag="11.2.2-cudnn8-devel-ubuntu20.04"
+ARG cuda_docker_tag="11.7.1-devel-ubuntu22.04"
 FROM nvidia/cuda:${cuda_docker_tag}
 
 COPY . /root/dopamine/
@@ -308,7 +326,7 @@ COPY . /root/dopamine/
 RUN apt-get update
 # tzdata is required below. To avoid hanging, install it first.
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install tzdata -y
-RUN apt-get install git wget libgl1-mesa-glx -y
+RUN apt-get install git wget libgl1-mesa-glx apt-utils -y
 
 # Install python3.8.
 RUN apt-get install software-properties-common -y
@@ -319,7 +337,7 @@ RUN apt-get install python3.8 -y
 RUN rm /usr/bin/python3
 RUN ln -s /usr/bin/python3.8 /usr/bin/python3
 RUN ln -s /usr/bin/python3.8 /usr/bin/python
-RUN apt-get install python3-distutils -y
+RUN apt-get install python3.8-distutils -y
 
 # Install pip.
 RUN wget https://bootstrap.pypa.io/get-pip.py
@@ -336,11 +354,16 @@ WORKDIR /root/dopamine
 
 ```
 
+Abschließend wird in den Hauptordner `projekt-dopamine` gewechselt.
+
 ```bash
 cd ..
 ```
 
 ## 4. Erstellen einer Dockerfile (Atari)
+
+Die Atari-Dockerfile wird erstellt und in den Ordner `atari` kopiert. Anschließend wird in den Ordner `atari` gewechselt. In diesem Image werden die ROMs für Atari 2600 sowie die Atari-Python-Bibliothek installiert.
+Damit sollte die Lernumgebung für Dopamine eingerichtet sein.
 
 ```bash
 mkdir atari
@@ -348,7 +371,7 @@ cd atari
 touch Dockerfile
 ```
 
-### 4.1. Dockerfile
+Inhalt der Dockerfile:
 
 ```dockerfile
 ARG base_image=dopamine/core
@@ -358,7 +381,7 @@ FROM ${base_image}
 RUN mkdir /root/roms
 COPY ./Roms.rar /root/roms/
 
-RUN apt-get install rar unzip -y
+RUN apt-get install rar -y
 RUN rar x /root/roms/Roms.rar /root/roms/
 
 # Install ROMs with ale-py.
@@ -368,29 +391,54 @@ RUN ale-import-roms /root/roms/ROMS
 
 ```
 
+Abschließend wird in den Hauptordner `projekt-dopamine` gewechselt.
+
 ```bash
 cd ..
 ```
 
 ## 5. Builden der Docker Images
 
+Für die Erstellung der Images muss man sich als root anmelden.
+
 ```bash
-docker build -f ./core/Dockerfile -t dopamine/core .
-docker build -f ./atari/Dockerfile -t dopamine/atari $ROM_DIR
+sudo su
+cd /root/dopamine
+docker build -f /home/mohamed/projekt-dopamine/core/Dockerfile -t dopamine/core .
+cd /home/mohamed/projekt-dopamine/
+docker build -f ./atari/Dockerfile -t dopamine/atari ./roms
 ```
 
 ## 6. Starten der Container
 
 ```bash
-docker run -d -t --network=host -it dopamine/atari bash
+docker run -d -t --network=host --name dopamine_atari -it dopamine/atari bash
+docker exec -it dopamine_atari bash
 ```
 
-## 7. Starten des Trainings
+## 7. Prüfen ob Dopamine Atari Test funktioniert
 
 ```bash
-cd /root/dopamine
+
+export PYTHONPATH=$PYTHONPATH:$PWD
+python -m tests.dopamine.atari_init_test
+
+```
+
+## 8. Trainieren eines Agenten
+
+```bash
 python -um dopamine.discrete_domains.train \
   --base_dir /tmp/dopamine_runs \
   --gin_files dopamine/agents/dqn/configs/dqn.gin
 
 ```
+
+Somit sollte der Agent trainiert werden. Die Trainingsdaten werden in den Ordner `/tmp/dopamine_runs` gespeichert.
+
+## Damit sollte die Installation von Dopamine abgeschlossen sein und die Lernumgebung für Atari 2600 eingerichtet sein. (1. Meilenstein Abgeschlossen)
+
+<br>
+<br>
+
+### Erfahrungen: Google/Dopamine Dokumentation ist nicht Vollständig, man muss sich durch die Fehlermeldungen durchkämpfen sowie das erstllen der Docker Images selbst konfigurieren und durchführen. Die Entwickler von Dopamine sollten mal selbst durch die Dokumentation gehen und schauen ob alles funktioniert wie es soll. Meiner Meinung nach ist die Dokumentation veraltet und nicht mehr aktuell. (Doku != Dopamine Version)

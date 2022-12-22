@@ -1,0 +1,16 @@
+## Mögliche Komplett Lösung:
+- https://gitee.com/ford25v6/dopamine/blob/master/README.md#https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Fgoogle%2Fdopamine%2Fblob%2Fmaster%2Fdopamine%2Fdiscrete_domains%2Ftrain.py
+
+- https://github.com/llSourcell/Google_Dopamine_LIVE/blob/master/Google_Dopamine_(LIVE)%20(1).ipynb
+
+- https://github.com/iamhamzaabdullah/Dopamine/blob/master/Google_Dopamine%20.ipynb
+
+- https://holmdk.github.io/2020/07/16/DQN_agent_ALE_dopamine.html
+
+- https://towardsdatascience.com/deep-reinforcement-learning-for-video-games-made-easy-6f7d06b75a65
+
+- https://github.com/holmdk/dopamine_ALE_agent
+
+- https://github.com/google/dopamine/blob/826f172ff24df00ab2f8cf4f6f0d352df17acdfe/dopamine/colab/agents.ipynb
+
+- https://colab.research.google.com/github/google/dopamine/blob/master/dopamine/colab/agents.ipynb

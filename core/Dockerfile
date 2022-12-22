@@ -1,4 +1,4 @@
-ARG cuda_docker_tag="11.2.2-cudnn8-devel-ubuntu20.04"
+ARG cuda_docker_tag="11.7.1-devel-ubuntu22.04"
 FROM nvidia/cuda:${cuda_docker_tag}
 
 COPY . /root/dopamine/
@@ -6,7 +6,7 @@ COPY . /root/dopamine/
 RUN apt-get update
 # tzdata is required below. To avoid hanging, install it first.
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install tzdata -y
-RUN apt-get install git wget libgl1-mesa-glx -y
+RUN apt-get install git wget libgl1-mesa-glx apt-utils -y
 
 # Install python3.8.
 RUN apt-get install software-properties-common -y
@@ -17,7 +17,7 @@ RUN apt-get install python3.8 -y
 RUN rm /usr/bin/python3
 RUN ln -s /usr/bin/python3.8 /usr/bin/python3
 RUN ln -s /usr/bin/python3.8 /usr/bin/python
-RUN apt-get install python3-distutils -y
+RUN apt-get install python3.8-distutils -y
 
 # Install pip.
 RUN wget https://bootstrap.pypa.io/get-pip.py
